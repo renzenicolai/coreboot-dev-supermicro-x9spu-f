@@ -1,0 +1,6 @@
+Category: server
+Board URL: http://www.supermicro.com/products/motherboard/Xeon/C216/X9SPU-F.cfm
+ROM package: SOIC-8
+ROM protocol: SPI
+ROM socketed: n
+Flashrom support: n
