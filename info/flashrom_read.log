@@ -1,0 +1,23 @@
+flashrom v0.9.9-r1955 on Linux 4.8.13-1-ARCH (x86_64)
+flashrom is free software, get the source code at https://flashrom.org
+
+flashrom was built with libpci 3.4.1, GCC 5.3.0, little endian
+Command line (5 args): flashrom -V -p internal:laptop=force_I_want_a_brick -r rom.bin
+Calibrating delay loop... OS timer resolution is 1 usecs, 3699M loops per second, 10 myus = 10 us, 100 myus = 100 us, 1000 myus = 999 us, 10000 myus = 10001 us, 4 myus = 4 us, OK.
+Initializing internal programmer
+No coreboot table found.
+Using Internal DMI decoder.
+DMI string chassis-type: "Desktop"
+DMI string system-manufacturer: "Supermicro"
+DMI string system-product-name: "X9SPU-F"
+DMI string system-version: "0123456789"
+DMI string baseboard-manufacturer: "Supermicro"
+DMI string baseboard-product-name: "X9SPU-F"
+DMI string baseboard-version: "1.01"
+Found chipset "Intel C216" with PCI ID 8086:1e53.
+This chipset is marked as untested. If you are using an up-to-date version
+of flashrom *and* were (not) able to successfully update your firmware with it,
+then please email a report to flashrom@flashrom.org including a verbose (-V) log.
+Thank you!
+Enabling flash write... Root Complex Register Block address = 0xfed1c000
+FAILED!

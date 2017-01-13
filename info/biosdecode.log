@@ -1,0 +1,39 @@
+# biosdecode 3.0
+ACPI 2.0 present.
+	OEM Identifier: SUPERM
+	RSD Table 32-bit Address: 0xDE9DF028
+	XSD Table 64-bit Address: 0x00000000DE9DF088
+SMBIOS 2.7 present.
+	Structure Table Length: 2348 bytes
+	Structure Table Address: 0x000EB4C0
+	Number Of Structures: 52
+	Maximum Structure Size: 184 bytes
+PNP BIOS 1.0 present.
+	Event Notification: Not Supported
+	Real Mode 16-bit Code Address: F000:C756
+	Real Mode 16-bit Data Address: F000:0000
+	16-bit Protected Mode Code Address: 0x000FC77E
+	16-bit Protected Mode Data Address: 0x000F0000
+PCI Interrupt Routing 1.0 present.
+	Router ID: 00:1f.0
+	Exclusive IRQs: None
+	Compatible Router: 8086:27b8
+	Slot Entry 1: ID 00:1f, on-board
+	Slot Entry 2: ID 00:14, on-board
+	Slot Entry 3: ID 00:1d, on-board
+	Slot Entry 4: ID 00:1a, on-board
+	Slot Entry 5: ID 00:1b, on-board
+	Slot Entry 6: ID 00:19, on-board
+	Slot Entry 7: ID 00:16, on-board
+	Slot Entry 8: ID 00:1c, on-board
+	Slot Entry 9: ID 01:00, slot number 33
+	Slot Entry 10: ID 02:00, slot number 17
+	Slot Entry 11: ID 03:00, slot number 18
+	Slot Entry 12: ID 04:00, slot number 1
+	Slot Entry 13: ID 04:01, slot number 2
+	Slot Entry 14: ID 04:02, slot number 3
+	Slot Entry 15: ID 04:03, slot number 4
+	Slot Entry 16: ID 00:01, on-board
+	Slot Entry 17: ID 00:06, on-board
+	Slot Entry 18: ID 00:02, on-board
+	Slot Entry 19: ID 00:04, on-board

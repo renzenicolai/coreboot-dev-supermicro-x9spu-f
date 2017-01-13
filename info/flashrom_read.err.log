@@ -1,0 +1,4 @@
+Error accessing ICH RCRB, 0x4000 bytes at 0x00000000fed1c000
+/dev/mem mmap failed: Operation not permitted
+FATAL ERROR!
+Error: Programmer initialization failed.
