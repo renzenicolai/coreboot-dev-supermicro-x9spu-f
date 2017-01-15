@@ -135,7 +135,9 @@ int init_igd_opregion(igd_opregion_t *opregion)
 {
 	device_t igd;
 	u16 reg16;
-
+    
+    //return 0; //TEMPFIX DO NOT TRY TO INIT IGD
+    
 	memset((void *)opregion, 0, sizeof(igd_opregion_t));
 
 	// FIXME if IGD is disabled, we should exit here.
@@ -169,7 +171,10 @@ int init_igd_opregion(igd_opregion_t *opregion)
 	opregion->mailbox3.bclm[9] = IGD_WORD_FIELD_VALID + 0x5ae5;
 	opregion->mailbox3.bclm[10] = IGD_WORD_FIELD_VALID + 0x64ff;
 
-	init_opregion_vbt(opregion);
+	if (init_opregion_vbt(opregion)==1) {
+        printk(BIOS_DEBUG, "No VBIOS, skipping IGD init!\n");
+        return 0; //Fix? Exit if vbios not found.
+    }
 
 	/* TODO This needs to happen in S3 resume, too.
 	 * Maybe it should move to the finalize handler
