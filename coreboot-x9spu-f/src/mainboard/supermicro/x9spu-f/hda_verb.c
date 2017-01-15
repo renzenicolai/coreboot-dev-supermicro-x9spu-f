@@ -2,12 +2,12 @@
 
 const u32 cim_verb_data[] = {
 	/* coreboot specific header */
-	0x10ec0887,	// Realtek 887
-	0x1458a002,	// Subsystem ID
-	0x0000000e,	// Number of entries
+	//0x10ec0887,	// Realtek 887
+	//0x1458a002,	// Subsystem ID
+	//0x0000000e,	// Number of entries
 
 	/* Pin Widget Verb Table */
-	AZALIA_PIN_CFG(0, 0x11, 0x411111f0),
+	/*AZALIA_PIN_CFG(0, 0x11, 0x411111f0),
 	AZALIA_PIN_CFG(0, 0x12, 0x411111f0),
 	AZALIA_PIN_CFG(0, 0x14, 0x01014410),
 	AZALIA_PIN_CFG(0, 0x15, 0x411111f0),
@@ -20,7 +20,7 @@ const u32 cim_verb_data[] = {
 	AZALIA_PIN_CFG(0, 0x1c, 0x411111f0),
 	AZALIA_PIN_CFG(0, 0x1d, 0x4004c601),
 	AZALIA_PIN_CFG(0, 0x1e, 0x411111f0),
-	AZALIA_PIN_CFG(0, 0x1f, 0x411111f0)
+	AZALIA_PIN_CFG(0, 0x1f, 0x411111f0)*/
 };
 
 const u32 pc_beep_verbs[] = {

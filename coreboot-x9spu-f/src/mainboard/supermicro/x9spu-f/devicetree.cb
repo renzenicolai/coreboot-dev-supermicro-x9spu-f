@@ -106,7 +106,7 @@ chip northbridge/intel/sandybridge
 				subsystemid 0x1458 0x5001
 			end
 			device pci 1f.4 off end
-			device pci 1f.5 off end # SATA Controller 2
+			device pci 1f.5 on end # SATA Controller 2
 		end
 	end
 end

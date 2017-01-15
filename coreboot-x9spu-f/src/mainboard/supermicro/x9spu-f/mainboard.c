@@ -34,7 +34,7 @@
 
 static void mainboard_init(device_t dev)
 {  
-    post_code(0x43);
+    //post_code(0x43);
 	RCBA32(0x38c8) = 0x00002005;
 	RCBA32(0x38c4) = 0x00802005;
 	RCBA32(0x38c0) = 0x00000007;
@@ -113,7 +113,7 @@ RCBA32(0x3838) = 0xf8000000;
 RCBA32(0x383c) = 0x04000009;
 RCBA32(0x3840) = 0x28000000;
 RCBA32(0x3844) = 0x0e0000e2;   
-    post_code(0x44);
+    //post_code(0x44);
 }
 
 // mainboard_enable is executed as first thing after
