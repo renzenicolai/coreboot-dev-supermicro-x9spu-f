@@ -23,8 +23,11 @@ chip northbridge/intel/sandybridge
 	register "pci_mmio_size" = "2048"
 
 	device domain 0 on
-		device pci 00.0 on end # host bridge
-		
+		subsystemid 0x1458 0x5000 inherit
+		device pci 00.0 on # host bridge
+			subsystemid 0x1458 0x5000
+		end
+
 		chip southbridge/intel/bd82x6x # Intel Series 7 Panther Point PCH
 
 			# GPI routing
@@ -40,25 +43,32 @@ chip northbridge/intel/sandybridge
 			register "docking_supported" = "0"
 			register "c2_latency" = "0x0065"
 
-			device pci 14.0 on  end # USB 3.0 Controller
-			device pci 16.0 off end # Management Engine Interface 1
+			device pci 14.0 on # USB 3.0 Controller
+				subsystemid 0x1458 0x5007
+			end
+			device pci 16.0 on end # Management Engine Interface 1
 			device pci 16.1 off end # Management Engine Interface 2
 			device pci 16.2 off end # Management Engine IDE-R
 			device pci 16.3 off end # Management Engine KT
 			device pci 19.0 off end # Intel Gigabit Ethernet
-			device pci 1a.0 on  end # USB2 EHCI #2
-			device pci 1b.0 off end # High Definition Audio
-			device pci 1c.0 on  end # PCIe Port #1
+			device pci 1a.0 on # USB2 EHCI #2
+				subsystemid 0x1458 0x5006
+			end
+			device pci 1b.0 off end
+			device pci 1c.0 on end # PCIe Port #1
 			device pci 1c.1 off end # PCIe Port #2
 			device pci 1c.2 off end # PCIe Port #3
 			device pci 1c.3 off end # PCIe Port #4
 			device pci 1c.4 off end # PCIe Port #5
 			device pci 1c.5 off end # PCIe Port #6
-			device pci 1c.6 on  end # PCIe Port #7
-			device pci 1c.7 on  end # PCIe Port #8
-			device pci 1d.0 on  end # USB2 EHCI #1
-			device pci 1e.0 off end # PCI bridge
+			device pci 1c.6 on end  # PCIe Port #7
+			device pci 1c.7 on end  # PCIe Port #8
+			device pci 1d.0 on # USB2 EHCI #1
+				subsystemid 0x1458 0x5006
+			end
+			device pci 1e.0 on end # PCI bridge
 			device pci 1f.0 on # ISA/LPC bridge
+				subsystemid 0x1458 0x5001
 				chip superio/nuvoton/nct6776
 					device pnp 2e.0 off end # FDC
 					device pnp 2e.1 off end # Parallel Port
@@ -81,22 +91,24 @@ chip northbridge/intel/sandybridge
 					#device pnp 2e.8 on end # WDT1, GPIO01A (Handled in romstage)
 					#device pnp 2e.9 on end # GPIO2345 (Handled in romstage)
 					device pnp 2e.0a off end # ACPI
-					device pnp 2e.0b off # Hardware Monitor, Front Panel LED (FIXME!!!)
-                        #io 0x60 = 0x0a30
-                        #irq 0x70 = 0x00
-                        #irq 0xf7 = 0x07
-                        #irq 0xf8 = 0x40
+					device pnp 2e.0b on # Hardware Monitor, Front Panel LED
+                        io 0x60 = 0x0a30
+                        irq 0xf7 = 0x07
+                        irq 0xf8 = 0x40
                     end
                     device pnp 2e.0d off end # VID
                     device pnp 2e.0e off end # CIR WAKE-UP
                     device pnp 2e.16 off end # Deep Sleep
 				end
 			end
-			device pci 1f.2 on  end # SATA Controller 1
-			device pci 1f.3 on  end # SMBus
+			device pci 1f.2 on # SATA Controller 1
+				subsystemid 0x1458 0xb005
+			end
+			device pci 1f.3 on # SMBus
+				subsystemid 0x1458 0x5001
+			end
 			device pci 1f.4 off end
-			device pci 1f.5 on  end # SATA Controller 2
-			device pci 1f.6 on  end # Thermal
+			device pci 1f.5 on end # SATA Controller 2
 		end
 	end
 end
