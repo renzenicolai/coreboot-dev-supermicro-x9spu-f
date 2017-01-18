@@ -122,8 +122,6 @@ RCBA32(0x3844) = 0x0e0000e2;
 static void mainboard_enable(device_t dev)
 {
 	dev->ops->init = mainboard_init;
-
-	//install_intel_vga_int15_handler(GMA_INT15_ACTIVE_LFP_NONE, GMA_INT15_PANEL_FIT_DEFAULT, GMA_INT15_BOOT_DISPLAY_CRT, 0);
 }
 
 struct chip_operations mainboard_ops = {

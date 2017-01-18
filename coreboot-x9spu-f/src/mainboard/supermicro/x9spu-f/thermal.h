@@ -14,13 +14,13 @@
  * GNU General Public License for more details.
  */
 
-#ifndef GAB75MD3H_THERMAL_H
-#define GAB75MD3H_THERMAL_H
+#ifndef X9SPU_F_THERMAL_H
+#define X9SPU_F_THERMAL_H
 
 	/* Temperature which OS will shutdown at */
-	#define CRITICAL_TEMPERATURE	100
+	#define CRITICAL_TEMPERATURE 90
 
 	/* Temperature which OS will throttle CPU */
-	#define PASSIVE_TEMPERATURE	90
+	#define PASSIVE_TEMPERATURE  80
 
 #endif

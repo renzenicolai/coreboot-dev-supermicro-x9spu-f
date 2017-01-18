@@ -47,13 +47,9 @@ void rcba_config(void)
     
     //OLD 0000 0000 0001 0111 1110 1110 0001 1111 1110 0001: 0x17ee1fe1
     //NEW 0000 0000 0001 0100 0011 1110 0001 1111 1111 0001: 0x143E1FF1
-    
-    
 
 	/* Enable HECI */
-	//RCBA32(FD2) &= ~0x2;
-    
-    post_code(0x42);
+	RCBA32(FD2) &= ~0x2;
 }
 
 void pch_enable_lpc(void)
@@ -72,6 +68,7 @@ void pch_enable_lpc(void)
 }
 
 const struct southbridge_usb_port mainboard_usb_ports[] = {
+    //TO-DO: Find out how to find these values and fix them.
 	{ 1, 5, 0 },
 	{ 1, 5, 0 },
 	{ 1, 5, 1 },
@@ -102,4 +99,5 @@ void mainboard_early_init(int s3resume) {
 
 void mainboard_config_superio(void)
 {
+    //TO-DO: Add Super I/O GPIO configuration
 }
