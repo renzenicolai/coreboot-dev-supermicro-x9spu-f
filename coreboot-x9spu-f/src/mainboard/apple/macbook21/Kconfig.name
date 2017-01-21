@@ -1,2 +1,0 @@
-config BOARD_APPLE_MACBOOK21
-	bool "Macbook2,1"

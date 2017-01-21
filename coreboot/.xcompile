@@ -1,0 +1,347 @@
+# platform agnostic and host tools
+IASL:=/home/renze/coreboot/util/crossgcc/xgcc/bin/iasl
+HOSTCC?=gcc
+CPUS?=4
+
+###########################################################################
+# arm
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/armv7-a-eabi- armv7-a-eabi- armv7-a-linux-gnu- armv7-a-linux- armv7-a- armv7-a-linux-gnueabi- /home/renze/coreboot/util/crossgcc/xgcc/bin/armv7a-eabi- armv7a-eabi- armv7a-linux-gnu- armv7a-linux- armv7a- armv7a-linux-gnueabi- /home/renze/coreboot/util/crossgcc/xgcc/bin/arm-eabi- arm-eabi- arm-linux-gnu- arm-linux- arm- arm-linux-gnueabi-
+# elf32-littlearm toolchain ()
+ARCH_SUPPORTED+=arm
+SUBARCH_SUPPORTED+=arm armv4 armv7 armv7_m armv7_r
+
+# GCC
+GCC_CC_arm:=
+GCC_CFLAGS_arm:=
+GCC_COMPILER_RT_arm:=
+GCC_COMPILER_RT_FLAGS_arm:=
+
+# Clang
+CLANG_CC_arm:=
+CLANG_CFLAGS_arm:=
+CLANG_CFLAGS_arm+=-no-integrated-as -Qunused-arguments -m32
+# tone down clang compiler warnings
+CLANG_CFLAGS_arm+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_arm:=
+CLANG_COMPILER_RT_FLAGS_arm:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_arm:=$(GCC_CC_arm)
+	CFLAGS_arm:=$(GCC_CFLAGS_arm)
+	COMPILER_RT_arm:=$(GCC_COMPILER_RT_arm)
+	COMPILER_RT_FLAGS_arm:=$(GCC_COMPILER_RT_FLAGS_arm)
+else
+	CC_arm:=$(CLANG_CC_arm)
+	CFLAGS_arm:=$(CLANG_CFLAGS_arm)
+	COMPILER_RT_arm:=$(CLANG_COMPILER_RT_arm)
+	COMPILER_RT_FLAGS_arm:=$(CLANG_COMPILER_RT_FLAGS_arm)
+endif
+
+CPP_arm:=invalidcpp
+AS_arm:=invalidas 
+LD_arm:=invalidld 
+NM_arm:=invalidnm
+OBJCOPY_arm:=invalidobjcopy
+OBJDUMP_arm:=invalidobjdump
+READELF_arm:=invalidreadelf
+STRIP_arm:=invalidstrip
+AR_arm:=invalidar
+GNATBIND_arm:=invalidgnatbind
+CROSS_COMPILE_arm:=invalid
+
+
+###########################################################################
+# arm64
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/aarch64-elf- aarch64-elf- aarch64-linux-gnu- aarch64-linux- aarch64- aarch64-linux-gnueabi-
+# elf64-littleaarch64 toolchain ()
+ARCH_SUPPORTED+=arm64
+SUBARCH_SUPPORTED+=arm64 armv8_64
+
+# GCC
+GCC_CC_arm64:=
+GCC_CFLAGS_arm64:=
+GCC_COMPILER_RT_arm64:=
+GCC_COMPILER_RT_FLAGS_arm64:=
+
+# Clang
+CLANG_CC_arm64:=
+CLANG_CFLAGS_arm64:=
+CLANG_CFLAGS_arm64+=-no-integrated-as -Qunused-arguments -m64
+# tone down clang compiler warnings
+CLANG_CFLAGS_arm64+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_arm64:=
+CLANG_COMPILER_RT_FLAGS_arm64:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_arm64:=$(GCC_CC_arm64)
+	CFLAGS_arm64:=$(GCC_CFLAGS_arm64)
+	COMPILER_RT_arm64:=$(GCC_COMPILER_RT_arm64)
+	COMPILER_RT_FLAGS_arm64:=$(GCC_COMPILER_RT_FLAGS_arm64)
+else
+	CC_arm64:=$(CLANG_CC_arm64)
+	CFLAGS_arm64:=$(CLANG_CFLAGS_arm64)
+	COMPILER_RT_arm64:=$(CLANG_COMPILER_RT_arm64)
+	COMPILER_RT_FLAGS_arm64:=$(CLANG_COMPILER_RT_FLAGS_arm64)
+endif
+
+CPP_arm64:=invalidcpp
+AS_arm64:=invalidas 
+LD_arm64:=invalidld 
+NM_arm64:=invalidnm
+OBJCOPY_arm64:=invalidobjcopy
+OBJDUMP_arm64:=invalidobjdump
+READELF_arm64:=invalidreadelf
+STRIP_arm64:=invalidstrip
+AR_arm64:=invalidar
+GNATBIND_arm64:=invalidgnatbind
+CROSS_COMPILE_arm64:=invalid
+
+
+###########################################################################
+# mipsel
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/mipsel-elf- mipsel-elf- mipsel-linux-gnu- mipsel-linux- mipsel- mipsel-linux-gnueabi-
+# elf32-littlemips toolchain ()
+ARCH_SUPPORTED+=mips
+SUBARCH_SUPPORTED+=mips mipsel
+
+# GCC
+GCC_CC_mips:=
+GCC_CFLAGS_mips:=
+GCC_COMPILER_RT_mips:=
+GCC_COMPILER_RT_FLAGS_mips:=
+
+# Clang
+CLANG_CC_mips:=
+CLANG_CFLAGS_mips:=
+CLANG_CFLAGS_mips+=-no-integrated-as -Qunused-arguments -m32
+# tone down clang compiler warnings
+CLANG_CFLAGS_mips+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_mips:=
+CLANG_COMPILER_RT_FLAGS_mips:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_mips:=$(GCC_CC_mips)
+	CFLAGS_mips:=$(GCC_CFLAGS_mips)
+	COMPILER_RT_mips:=$(GCC_COMPILER_RT_mips)
+	COMPILER_RT_FLAGS_mips:=$(GCC_COMPILER_RT_FLAGS_mips)
+else
+	CC_mips:=$(CLANG_CC_mips)
+	CFLAGS_mips:=$(CLANG_CFLAGS_mips)
+	COMPILER_RT_mips:=$(CLANG_COMPILER_RT_mips)
+	COMPILER_RT_FLAGS_mips:=$(CLANG_COMPILER_RT_FLAGS_mips)
+endif
+
+CPP_mips:=invalidcpp
+AS_mips:=invalidas 
+LD_mips:=invalidld 
+NM_mips:=invalidnm
+OBJCOPY_mips:=invalidobjcopy
+OBJDUMP_mips:=invalidobjdump
+READELF_mips:=invalidreadelf
+STRIP_mips:=invalidstrip
+AR_mips:=invalidar
+GNATBIND_mips:=invalidgnatbind
+CROSS_COMPILE_mips:=invalid
+
+
+###########################################################################
+# riscv
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/riscv-elf- riscv-elf- riscv-linux-gnu- riscv-linux- riscv- riscv-linux-gnueabi- /home/renze/coreboot/util/crossgcc/xgcc/bin/riscv64-elf- riscv64-elf- riscv64-linux-gnu- riscv64-linux- riscv64- riscv64-linux-gnueabi-
+# elf64-littleriscv toolchain ()
+ARCH_SUPPORTED+=riscv
+SUBARCH_SUPPORTED+=riscv
+
+# GCC
+GCC_CC_riscv:=
+GCC_CFLAGS_riscv:=
+GCC_COMPILER_RT_riscv:=
+GCC_COMPILER_RT_FLAGS_riscv:=
+
+# Clang
+CLANG_CC_riscv:=
+CLANG_CFLAGS_riscv:=
+CLANG_CFLAGS_riscv+=-no-integrated-as -Qunused-arguments -m64
+# tone down clang compiler warnings
+CLANG_CFLAGS_riscv+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_riscv:=
+CLANG_COMPILER_RT_FLAGS_riscv:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_riscv:=$(GCC_CC_riscv)
+	CFLAGS_riscv:=$(GCC_CFLAGS_riscv)
+	COMPILER_RT_riscv:=$(GCC_COMPILER_RT_riscv)
+	COMPILER_RT_FLAGS_riscv:=$(GCC_COMPILER_RT_FLAGS_riscv)
+else
+	CC_riscv:=$(CLANG_CC_riscv)
+	CFLAGS_riscv:=$(CLANG_CFLAGS_riscv)
+	COMPILER_RT_riscv:=$(CLANG_COMPILER_RT_riscv)
+	COMPILER_RT_FLAGS_riscv:=$(CLANG_COMPILER_RT_FLAGS_riscv)
+endif
+
+CPP_riscv:=invalidcpp
+AS_riscv:=invalidas 
+LD_riscv:=invalidld 
+NM_riscv:=invalidnm
+OBJCOPY_riscv:=invalidobjcopy
+OBJDUMP_riscv:=invalidobjdump
+READELF_riscv:=invalidreadelf
+STRIP_riscv:=invalidstrip
+AR_riscv:=invalidar
+GNATBIND_riscv:=invalidgnatbind
+CROSS_COMPILE_riscv:=invalid
+
+
+###########################################################################
+# x64
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf- x86_64-elf- x86_64-linux-gnu- x86_64-linux- x86_64- x86_64-linux-gnueabi-
+# elf64-x86-64 toolchain (/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc)
+ARCH_SUPPORTED+=x86_64
+SUBARCH_SUPPORTED+=x86_64
+
+# GCC
+GCC_CC_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc
+GCC_CFLAGS_x86_64:= -m64  -fuse-ld=bfd -fno-stack-protector -Wl,--build-id=none
+GCC_COMPILER_RT_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/lib/gcc/x86_64-elf/5.3.0/64/libgcc.a
+GCC_COMPILER_RT_FLAGS_x86_64:=
+
+ifeq ($(CONFIG_USE_MARCH_586),y)
+	GCC_CFLAGS_x86_64 += -march=i586
+else
+	GCC_CFLAGS_x86_64 += -march=i686
+endif
+
+# Clang
+CLANG_CC_x86_64:=
+CLANG_CFLAGS_x86_64:=
+CLANG_CFLAGS_x86_64+=-no-integrated-as -Qunused-arguments -m64
+# tone down clang compiler warnings
+CLANG_CFLAGS_x86_64+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_x86_64:=
+CLANG_COMPILER_RT_FLAGS_x86_64:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_x86_64:=$(GCC_CC_x86_64)
+	CFLAGS_x86_64:=$(GCC_CFLAGS_x86_64)
+	COMPILER_RT_x86_64:=$(GCC_COMPILER_RT_x86_64)
+	COMPILER_RT_FLAGS_x86_64:=$(GCC_COMPILER_RT_FLAGS_x86_64)
+else
+	CC_x86_64:=$(CLANG_CC_x86_64)
+	CFLAGS_x86_64:=$(CLANG_CFLAGS_x86_64)
+	COMPILER_RT_x86_64:=$(CLANG_COMPILER_RT_x86_64)
+	COMPILER_RT_FLAGS_x86_64:=$(CLANG_COMPILER_RT_FLAGS_x86_64)
+endif
+
+CPP_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-cpp
+AS_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-as 
+LD_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-ld.bfd 
+NM_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-nm
+OBJCOPY_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objcopy
+OBJDUMP_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objdump
+READELF_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-readelf
+STRIP_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-strip
+AR_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-ar
+GNATBIND_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gnatbind
+CROSS_COMPILE_x86_64:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-
+
+
+###########################################################################
+# x86
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/i386-elf- i386-elf- i386-linux-gnu- i386-linux- i386- i386-linux-gnueabi- /home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf- x86_64-elf- x86_64-linux-gnu- x86_64-linux- x86_64- x86_64-linux-gnueabi-
+# elf32-i386 toolchain (/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc)
+ARCH_SUPPORTED+=x86_32
+SUBARCH_SUPPORTED+=x86_32
+
+# GCC
+GCC_CC_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gcc
+GCC_CFLAGS_x86_32:=-m32 -Wl,-b,elf32-i386 -Wl,-melf_i386 -m32  -fuse-ld=bfd -fno-stack-protector -Wl,--build-id=none
+GCC_COMPILER_RT_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/lib/gcc/x86_64-elf/5.3.0/32/libgcc.a
+GCC_COMPILER_RT_FLAGS_x86_32:=--wrap __divdi3 --wrap __udivdi3 --wrap __moddi3 --wrap __umoddi3
+
+ifeq ($(CONFIG_USE_MARCH_586),y)
+	GCC_CFLAGS_x86_32 += -march=i586
+else
+	GCC_CFLAGS_x86_32 += -march=i686
+endif
+
+# Clang
+CLANG_CC_x86_32:=
+CLANG_CFLAGS_x86_32:=-m32 -Wl,-b,elf32-i386 -Wl,-melf_i386 -Wl,-b,elf32-i386 -Wl,-melf_i386
+CLANG_CFLAGS_x86_32+=-no-integrated-as -Qunused-arguments -m32
+# tone down clang compiler warnings
+CLANG_CFLAGS_x86_32+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_x86_32:=
+CLANG_COMPILER_RT_FLAGS_x86_32:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_x86_32:=$(GCC_CC_x86_32)
+	CFLAGS_x86_32:=$(GCC_CFLAGS_x86_32)
+	COMPILER_RT_x86_32:=$(GCC_COMPILER_RT_x86_32)
+	COMPILER_RT_FLAGS_x86_32:=$(GCC_COMPILER_RT_FLAGS_x86_32)
+else
+	CC_x86_32:=$(CLANG_CC_x86_32)
+	CFLAGS_x86_32:=$(CLANG_CFLAGS_x86_32)
+	COMPILER_RT_x86_32:=$(CLANG_COMPILER_RT_x86_32)
+	COMPILER_RT_FLAGS_x86_32:=$(CLANG_COMPILER_RT_FLAGS_x86_32)
+endif
+
+CPP_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-cpp
+AS_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-as --32
+LD_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-ld.bfd -b elf32-i386 -melf_i386
+NM_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-nm
+OBJCOPY_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objcopy
+OBJDUMP_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-objdump
+READELF_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-readelf
+STRIP_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-strip
+AR_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-ar
+GNATBIND_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-gnatbind
+CROSS_COMPILE_x86_32:=/home/renze/coreboot/util/crossgcc/xgcc/bin/x86_64-elf-
+
+
+###########################################################################
+# power8
+# TARCH_SEARCH=  /home/renze/coreboot/util/crossgcc/xgcc/bin/powerpc64-linux-gnu- powerpc64-linux-gnu- powerpc64-linux-gnu- powerpc64-linux- powerpc64- powerpc64-linux-gnueabi-
+# elf64-powerpc toolchain ()
+ARCH_SUPPORTED+=power8
+SUBARCH_SUPPORTED+=power8
+
+# GCC
+GCC_CC_power8:=
+GCC_CFLAGS_power8:=-m32 -Wl,-b,elf32-i386 -Wl,-melf_i386 -m32  -fuse-ld=bfd -fno-stack-protector -Wl,--build-id=none
+GCC_COMPILER_RT_power8:=/home/renze/coreboot/util/crossgcc/xgcc/lib/gcc/x86_64-elf/5.3.0/32/libgcc.a
+GCC_COMPILER_RT_FLAGS_power8:=-mcpu=power8 -mbig-endian
+
+# Clang
+CLANG_CC_power8:=
+CLANG_CFLAGS_power8:=-m32 -Wl,-b,elf32-i386 -Wl,-melf_i386 -Wl,-b,elf32-i386 -Wl,-melf_i386
+CLANG_CFLAGS_power8+=-no-integrated-as -Qunused-arguments -m64
+# tone down clang compiler warnings
+CLANG_CFLAGS_power8+=-Wno-unused-variable -Wno-unused-function -Wno-tautological-compare -Wno-shift-overflow
+CLANG_COMPILER_RT_power8:=
+CLANG_COMPILER_RT_FLAGS_power8:=
+
+ifeq ($(CONFIG_COMPILER_GCC)$(CONFIG_LP_COMPILER_GCC),y)
+	CC_power8:=$(GCC_CC_power8)
+	CFLAGS_power8:=$(GCC_CFLAGS_power8)
+	COMPILER_RT_power8:=$(GCC_COMPILER_RT_power8)
+	COMPILER_RT_FLAGS_power8:=$(GCC_COMPILER_RT_FLAGS_power8)
+else
+	CC_power8:=$(CLANG_CC_power8)
+	CFLAGS_power8:=$(CLANG_CFLAGS_power8)
+	COMPILER_RT_power8:=$(CLANG_COMPILER_RT_power8)
+	COMPILER_RT_FLAGS_power8:=$(CLANG_COMPILER_RT_FLAGS_power8)
+endif
+
+CPP_power8:=invalidcpp
+AS_power8:=invalidas --32
+LD_power8:=invalidld.bfd -b elf32-i386 -melf_i386
+NM_power8:=invalidnm
+OBJCOPY_power8:=invalidobjcopy
+OBJDUMP_power8:=invalidobjdump
+READELF_power8:=invalidreadelf
+STRIP_power8:=invalidstrip
+AR_power8:=invalidar
+GNATBIND_power8:=invalidgnatbind
+CROSS_COMPILE_power8:=invalid
+
+
+XCOMPILE_COMPLETE:=1

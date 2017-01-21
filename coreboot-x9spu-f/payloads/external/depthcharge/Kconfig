@@ -1,7 +1,0 @@
-if PAYLOAD_DEPTHCHARGE
-
-config PAYLOAD_FILE
-	string
-	default "payloads/external/depthcharge/depthcharge/build/depthcharge.elf"
-
-endif
